@@ -1,6 +1,10 @@
+#!/usr/bin/env python3
 import json
 import sys
 import argparse
+
+if sys.version_info[0] < 3:
+    raise Exception("Python 3 or a more recent version is required.")
 
 # print("This is the name of the script: ", sys.argv[0])
 # print("Number of arguments: ", len(sys.argv))
