@@ -71,7 +71,7 @@ for item in json_decode['shaders']:
         inputs = p['inputs']
         for inp in inputs:
             print(' in:', inp['type'], ":", inp['id'])
-        name += str('.frag')
+        name += str('.fs')
         file = open(name, "w")
         file.write(prefix)
         file.write(p['code'])
