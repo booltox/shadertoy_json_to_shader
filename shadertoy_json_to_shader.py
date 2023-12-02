@@ -19,8 +19,10 @@ uniform vec3      iResolution;           // viewport resolution (in pixels)
 uniform float     iTime;                 // shader playback time (in seconds)
 uniform float     iTimeDelta;            // render time (in seconds)
 uniform int       iFrame;                // shader playback frame
+uniform float     iChannelTime[4];       // channel playback time (in seconds)
+uniform vec3      iChannelResolution[4]; // channel resolution (in pixels) 
 uniform vec4      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click
-//uniform samplerXX iChannel0..3;          // input channel. XX = 2D/Cube
+//uniform samplerXX iChannel0..3;        // input channel. XX = 2D/Cube
 uniform sampler2D iChannel0;
 uniform sampler2D iChannel1;
 uniform sampler2D iChannel2;
@@ -67,7 +69,8 @@ for item in json_decode['shaders']:
     for p in rp:
         name = str(shader_name) + '_' + p['name']
         name = name.replace(" ", "_")
-        print(name, ' type:', p['type'], ' id:', p['outputs'][0]['id'])
+        for outp in p['outputs']:
+            print(name, ' type:', p['type'], ' id:', p['outputs'][0]['id'])
         inputs = p['inputs']
         for inp in inputs:
             print(' in:', inp['type'], ":", inp['id'])
